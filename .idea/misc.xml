@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/add.xml" value="10.0" />
+        <entry key="app/src/main/res/drawable/button_bg.xml" value="0.2611111111111111" />
+        <entry key="app/src/main/res/layout/activity_add_repo.xml" value="0.3227874164711063" />
+        <entry key="app/src/main/res/layout/activity_commits.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_repo_detail.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/branch_layout.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/commit_layout.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_branches_fragments.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_issues_fragments.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/issues_layout.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/repo_layout.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
