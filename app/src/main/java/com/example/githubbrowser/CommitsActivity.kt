@@ -46,7 +46,6 @@ class CommitsActivity : AppCompatActivity() {
     }
 
     private fun getCommitList(){
-        pgbar.visibility= View.VISIBLE
 
         val requestQueue = Volley.newRequestQueue(this)
         val syntax1="https://api.github.com/repos"
@@ -81,15 +80,14 @@ class CommitsActivity : AppCompatActivity() {
                 val newCommit=Commits(date,message,username,avatar_url)
                 list.add(newCommit)
                 Log.i("maryritiki","ff"+newCommit)
+                adapter.notifyItemChanged(i)
 
             }
-            pgbar.visibility= View.INVISIBLE
 
             Log.i("maryRitiki","ll"+list.size)
             if(list.size==0)
                 Toast.makeText(this,"Cannot Display Too many commits!",Toast.LENGTH_LONG);
 
-            adapter.notifyDataSetChanged()
 
         }
         catch (e: JSONException) {
