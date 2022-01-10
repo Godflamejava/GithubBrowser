@@ -1,4 +1,4 @@
-package com.example.githubbrowser
+package com.example.githubbrowser.Adapter
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.example.githubbrowser.Activity.CommitsActivity
+import com.example.githubbrowser.Activity.RepoDetailActivity
+import com.example.githubbrowser.R
 
 class BranchAdapter(private val mList: List<String>,private val context: Context) : RecyclerView.Adapter<BranchAdapter.ViewHolder>() {
     private val activity : RepoDetailActivity = context as RepoDetailActivity
@@ -32,7 +35,7 @@ class BranchAdapter(private val mList: List<String>,private val context: Context
            val editor: SharedPreferences.Editor =  sharedPreferences.edit()
            editor.putString("branchname",holder.brandName.text.toString())
            editor.apply()
-           val i = Intent(context,CommitsActivity::class.java)
+           val i = Intent(context, CommitsActivity::class.java)
            context.startActivity(i)
            activity.finish()
 

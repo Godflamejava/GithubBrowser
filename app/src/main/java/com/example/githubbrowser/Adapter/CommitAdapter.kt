@@ -1,18 +1,19 @@
-package com.example.githubbrowser
+package com.example.githubbrowser.Adapter
 
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.githubbrowser.Model.Commits
+import com.example.githubbrowser.R
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
 
-class CommitAdapter(private val commitList: List<Commits>,private val context: Context) : RecyclerView.Adapter<CommitAdapter.ViewHolder>() {
+class CommitAdapter(private val commitList: List<Commits>, private val context: Context) : RecyclerView.Adapter<CommitAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

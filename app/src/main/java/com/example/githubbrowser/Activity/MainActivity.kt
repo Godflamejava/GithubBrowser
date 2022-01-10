@@ -1,4 +1,4 @@
-package com.example.githubbrowser
+package com.example.githubbrowser.Activity
 
 import android.content.Context
 import android.content.Intent
@@ -11,6 +11,8 @@ import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.githubbrowser.R
+import com.example.githubbrowser.Adapter.RepoAdaptar
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     }
   private fun addMoreFunction(){
-        val intent = Intent (this,AddRepo::class.java)
+        val intent = Intent (this, AddRepo::class.java)
       startActivity(intent)
       finish()
     }

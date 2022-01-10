@@ -12,16 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubBrowser">
         <activity
-            android:name=".CommitsActivity"
+            android:name=".Activity.CommitsActivity"
             android:exported="false" />
         <activity
-            android:name=".RepoDetailActivity"
+            android:name=".Activity.RepoDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".AddRepo"
+            android:name=".Activity.AddRepo"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

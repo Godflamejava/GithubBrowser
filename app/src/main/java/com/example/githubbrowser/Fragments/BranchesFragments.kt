@@ -1,4 +1,4 @@
-package com.example.githubbrowser
+package com.example.githubbrowser.Fragments
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import com.example.githubbrowser.Adapter.BranchAdapter
+import com.example.githubbrowser.R
 import org.json.JSONException
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,18 +24,16 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [IssuesFragments.newInstance] factory method to
+ * Use the [BranchesFragments.newInstance] factory method to
  * create an instance of this fragment.
  */
-class IssuesFragments : Fragment() {
+class BranchesFragments : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var imageList:ArrayList<String> = ArrayList();
-    private var titleList:ArrayList<String> = ArrayList();
-    private var issueCreatorList:ArrayList<String> = ArrayList();
+    private var list:ArrayList<String> = ArrayList();
+    private lateinit var adapter: BranchAdapter
 
-    private lateinit var adapter:IssuesAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -47,53 +47,56 @@ class IssuesFragments : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view= inflater.inflate(R.layout.fragment_issues_fragments, container, false)
+        val view= inflater.inflate(R.layout.fragment_branches_fragments, container, false)
         val recyclerView =view.findViewById<RecyclerView>(R.id.recycleView)
-        getIssueList()
+        getBranchList()
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = IssuesAdapter(titleList,imageList ,issueCreatorList,requireContext())
+        adapter = BranchAdapter(list, requireContext())
         recyclerView.adapter=adapter
 
 
-        return view
+
+      return view
     }
-    private fun getIssueList(){
-        val requestQueue = Volley.newRequestQueue(context)
+
+    private fun getBranchList(){
+
+            val requestQueue = Volley.newRequestQueue(context)
+            val syntax1="https://api.github.com/repos"
+            val syntax2="/branches"
+
         val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("sharedPrefFile",
             Context.MODE_PRIVATE)
         val repoData = sharedPreferences.getString("currentRepo", "")
         val strs = repoData?.split(":")?.toTypedArray()
         val owner= strs?.get(0)
         val repoName=strs?.get(1)
-        val syntax1="https://api.github.com/repos"
-        val syntax2="/issues?state=open"
-        val url= "$syntax1/$owner/$repoName$syntax2"
-        Log.i("maryritiki3",url)
-        val request = JsonArrayRequest(Request.Method.GET, url, null, {
-                response ->try {
-            for (i in 0 until response.length())
-            {
-                val issue = response.getJSONObject(i)
-                val title=issue.getString("title")
-                val user=issue.getJSONObject("user")
-                val avatar_url=user.getString("avatar_url")
-                val creator=user.getString("login")
-                issueCreatorList.add(creator)
-                titleList.add(title)
-                imageList.add(avatar_url)
+
+            val url= "$syntax1/$owner/$repoName$syntax2"
+            Log.i("maryritiki",url)
+
+
+            val request = JsonArrayRequest(Request.Method.GET, url, null, {
+                    response ->try {
+                for (i in 0 until response.length())
+                {
+                    val branch = response.getJSONObject(i)
+                    val name = branch.getString("name")
+                    Log.i("maryritiki",name)
+
+                    list.add(name)
+                }
+                adapter.notifyDataSetChanged()
+
             }
-            adapter.notifyDataSetChanged()
+            catch (e: JSONException) {
+                e.printStackTrace()
+            }
+            }, { error -> error.printStackTrace() })
+            requestQueue.add(request)
 
-        }
-        catch (e: JSONException) {
-            e.printStackTrace()
-        }
-        }, { error -> error.printStackTrace() })
-        requestQueue.add(request)
+
     }
-
-
-
 
     companion object {
         /**
@@ -102,12 +105,12 @@ class IssuesFragments : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment IssuesFragments.
+         * @return A new instance of fragment BranchesFragments.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            IssuesFragments().apply {
+            BranchesFragments().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
@@ -115,3 +118,4 @@ class IssuesFragments : Fragment() {
             }
     }
 }
+

@@ -1,4 +1,4 @@
-package com.example.githubbrowser
+package com.example.githubbrowser.Adapter
 
 import android.content.Context
 import android.content.Intent
@@ -14,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.githubbrowser.Activity.MainActivity
+import com.example.githubbrowser.Activity.RepoDetailActivity
+import com.example.githubbrowser.R
 import org.json.JSONException
 
 class RepoAdaptar(private val mList: List<String>,private val context: Context) : RecyclerView.Adapter<RepoAdaptar.ViewHolder>() {
@@ -56,7 +59,7 @@ class RepoAdaptar(private val mList: List<String>,private val context: Context) 
             val editor:SharedPreferences.Editor =  sharedPreferences.edit()
             editor.putString("currentRepo",repoData)
             editor.apply()
-            val intent = Intent (context,RepoDetailActivity::class.java)
+            val intent = Intent (context, RepoDetailActivity::class.java)
             context.startActivity(intent)
             activity.finish()
 

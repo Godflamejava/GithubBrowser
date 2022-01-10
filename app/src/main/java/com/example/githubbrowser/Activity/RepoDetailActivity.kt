@@ -1,4 +1,4 @@
-package com.example.githubbrowser
+package com.example.githubbrowser.Activity
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -18,6 +18,8 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.githubbrowser.Adapter.MyAdapter
+import com.example.githubbrowser.R
 import com.google.android.material.tabs.TabLayout
 import org.json.JSONException
 
@@ -43,7 +45,7 @@ class RepoDetailActivity : AppCompatActivity() {
         val  back=findViewById<ImageView>(R.id.close)
 
         back.setOnClickListener{
-            val intent = Intent (this,MainActivity::class.java);
+            val intent = Intent (this, MainActivity::class.java);
             startActivity(intent)
             this.finish()
 
@@ -70,7 +72,7 @@ class RepoDetailActivity : AppCompatActivity() {
                         editor.putStringSet("repoSet",repoSet)
                         editor.putString("currentRepo","")
                         editor.apply()
-                        val intent = Intent (this,MainActivity::class.java)
+                        val intent = Intent (this, MainActivity::class.java)
                         startActivity(intent)
                         finish()
 

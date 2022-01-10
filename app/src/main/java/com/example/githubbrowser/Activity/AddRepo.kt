@@ -1,4 +1,4 @@
-package com.example.githubbrowser
+package com.example.githubbrowser.Activity
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.githubbrowser.R
 import org.json.JSONException
 
 class AddRepo : AppCompatActivity() {
@@ -29,7 +30,7 @@ class AddRepo : AppCompatActivity() {
 
        val  back=findViewById<ImageView>(R.id.iv_back)
         back.setOnClickListener{
-            val intent = Intent (this,MainActivity::class.java);
+            val intent = Intent (this, MainActivity::class.java);
             startActivity(intent)
             this.finish()
 
@@ -65,7 +66,7 @@ class AddRepo : AppCompatActivity() {
             editor.putStringSet("repoSet",repoSet)
             editor.apply()
             Toast.makeText(this,"Added Successfully!",Toast.LENGTH_LONG ).show()
-            val intent = Intent (this,MainActivity::class.java);
+            val intent = Intent (this, MainActivity::class.java);
             startActivity(intent)
             finish()
                 }

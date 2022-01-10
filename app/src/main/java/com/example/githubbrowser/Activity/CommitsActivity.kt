@@ -1,4 +1,4 @@
-package com.example.githubbrowser
+package com.example.githubbrowser.Activity
 
 import android.content.Context
 import android.content.Intent
@@ -16,11 +16,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import com.example.githubbrowser.Adapter.CommitAdapter
+import com.example.githubbrowser.Model.Commits
+import com.example.githubbrowser.R
 import org.json.JSONException
 
 class CommitsActivity : AppCompatActivity() {
     private var list:ArrayList<Commits> = ArrayList()
-    private lateinit var adapter:CommitAdapter
+    private lateinit var adapter: CommitAdapter
     private  lateinit var pgbar:ProgressBar
     private  lateinit var brachNameTitle:TextView
 
@@ -30,7 +33,7 @@ class CommitsActivity : AppCompatActivity() {
         val recyclerView:RecyclerView=findViewById(R.id.recycleView)
         val  back=findViewById<ImageView>(R.id.close)
         back.setOnClickListener{
-            val intent = Intent (this,MainActivity::class.java);
+            val intent = Intent (this, MainActivity::class.java);
             startActivity(intent)
             this.finish()
 
@@ -77,7 +80,7 @@ class CommitsActivity : AppCompatActivity() {
                 val author2=jsonobject.getJSONObject("author")
                 val avatar_url=author2.getString("avatar_url")
 
-                val newCommit=Commits(date,message,username,avatar_url)
+                val newCommit= Commits(date,message,username,avatar_url)
                 list.add(newCommit)
                 Log.i("maryritiki","ff"+newCommit)
                 adapter.notifyItemChanged(i)

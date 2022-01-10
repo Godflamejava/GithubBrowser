@@ -1,4 +1,4 @@
-package com.example.githubbrowser
+package com.example.githubbrowser.Model
 
 import java.util.*
 
